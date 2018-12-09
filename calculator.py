@@ -1,4 +1,4 @@
-from tkinter import Tk, IntVar, StringVar, END
+from tkinter import Tk, DoubleVar, StringVar, END
 from tkinter import messagebox
 from tkinter.ttk import *
 
@@ -11,7 +11,7 @@ class Calc:
         self.master.bind('<Return>', self.get_field)
 
         self.total = 0
-        self.total_var = IntVar()
+        self.total_var = DoubleVar()
         self.total_var.set(self.total)
 
         self.expression = ''
@@ -108,7 +108,7 @@ class Calc:
                 self.expression += char
             # if expression start with operation -> use existing total as first number
                 if self.expression[0] in "+-/*%":
-                        self.expression = str(self.total_var.get()) + self.expression
+                        self.expression = str(float(self.total_var.get())) + self.expression
 
         self.exp.set(self.expression)
         self.total_var.set(self.total)
